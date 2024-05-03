@@ -1,0 +1,1 @@
+{ "p": "drc-20-pow", "op": "mint", "tick": "dogw", "amt": "1000" }
