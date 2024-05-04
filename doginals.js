@@ -1,532 +1,526 @@
 #!/usr/bin/env node
 
-const _0x4977ab = _0x4ed0;
-(function (_0x165dc0, _0x44564b) {
-    const _0x2ff52c = _0x4ed0, _0x455044 = _0x165dc0();
+const _0x518cef = _0x1b75;
+(function (_0x28e3ef, _0x1776fc) {
+    const _0x389130 = _0x1b75, _0x108b65 = _0x28e3ef();
     while (!![]) {
         try {
-            const _0x1b35e7 = parseInt(_0x2ff52c(0x89)) / 0x1 * (-parseInt(_0x2ff52c(0xa2)) / 0x2) + parseInt(_0x2ff52c(0xe5)) / 0x3 + -parseInt(_0x2ff52c(0xb2)) / 0x4 + parseInt(_0x2ff52c(0x11b)) / 0x5 * (parseInt(_0x2ff52c(0xc0)) / 0x6) + parseInt(_0x2ff52c(0x10e)) / 0x7 * (-parseInt(_0x2ff52c(0xe2)) / 0x8) + -parseInt(_0x2ff52c(0x101)) / 0x9 * (-parseInt(_0x2ff52c(0x8a)) / 0xa) + parseInt(_0x2ff52c(0x87)) / 0xb;
-            if (_0x1b35e7 === _0x44564b)
+            const _0xe13c3c = parseInt(_0x389130(0x145)) / 0x1 + parseInt(_0x389130(0x1a0)) / 0x2 * (parseInt(_0x389130(0x1ac)) / 0x3) + -parseInt(_0x389130(0x18f)) / 0x4 * (parseInt(_0x389130(0x197)) / 0x5) + parseInt(_0x389130(0x176)) / 0x6 + -parseInt(_0x389130(0x15b)) / 0x7 + -parseInt(_0x389130(0x131)) / 0x8 * (-parseInt(_0x389130(0x179)) / 0x9) + -parseInt(_0x389130(0x181)) / 0xa;
+            if (_0xe13c3c === _0x1776fc)
                 break;
             else
-                _0x455044['push'](_0x455044['shift']());
-        } catch (_0x2450c0) {
-            _0x455044['push'](_0x455044['shift']());
+                _0x108b65['push'](_0x108b65['shift']());
+        } catch (_0x14cd09) {
+            _0x108b65['push'](_0x108b65['shift']());
         }
     }
-}(_0x1d7e, 0x25b16));
-const dogecore = require('bitcore-lib-doge'), axios = require(_0x4977ab(0xe8)), fs = require('fs'), dotenv = require(_0x4977ab(0x10c)), mime = require('mime-types'), {PrivateKey, Address, Transaction, Script, Opcode} = dogecore, {Hash, Signature} = dogecore['crypto'];
-dotenv[_0x4977ab(0xed)]();
-process['env'][_0x4977ab(0x123)] == 'true' && (dogecore['Networks']['defaultNetwork'] = dogecore['Networks'][_0x4977ab(0x86)]);
-process[_0x4977ab(0xf5)]['FEE_PER_KB'] ? Transaction[_0x4977ab(0xe4)] = parseInt(process[_0x4977ab(0xf5)]['FEE_PER_KB']) : Transaction[_0x4977ab(0xe4)] = 0x5f5e100;
-const WALLET_PATH = process[_0x4977ab(0xf5)][_0x4977ab(0xbe)] || _0x4977ab(0xa9);
+}(_0x31a7, 0xd3db7));
+const dogecore = require(_0x518cef(0x1af)), axios = require(_0x518cef(0x152)), fs = require('fs'), dotenv = require('dotenv'), mime = require(_0x518cef(0x125)), {PrivateKey, Address, Transaction, Script, Opcode} = dogecore, {Hash, Signature} = dogecore[_0x518cef(0x126)];
+dotenv[_0x518cef(0x16d)]();
+process['env']['TESTNET'] == _0x518cef(0x127) && (dogecore[_0x518cef(0x159)][_0x518cef(0x11c)] = dogecore['Networks']['testnet']);
+process[_0x518cef(0x133)]['FEE_PER_KB'] ? Transaction['FEE_PER_KB'] = parseInt(process[_0x518cef(0x133)]['FEE_PER_KB']) : Transaction[_0x518cef(0x169)] = 0x5f5e100;
+const WALLET_PATH = process[_0x518cef(0x133)][_0x518cef(0x144)] || _0x518cef(0x14f);
 async function main() {
-    const _0xe59d7d = _0x4977ab;
-    let _0x553583 = process[_0xe59d7d(0x93)][0x2];
-    if (_0x553583 == _0xe59d7d(0x9f))
+    const _0x336615 = _0x518cef;
+    let _0x8a51fc = process[_0x336615(0x164)][0x2];
+    if (_0x8a51fc == _0x336615(0x168))
         await walletSync(), await mint();
     else {
-        if (_0x553583 == _0xe59d7d(0x108))
+        if (_0x8a51fc == _0x336615(0x173))
             await wallet();
         else {
-            if (_0x553583 == 'server')
+            if (_0x8a51fc == 'server')
                 await server();
             else {
-                if (_0x553583 == _0xe59d7d(0x8c))
+                if (_0x8a51fc == _0x336615(0x180))
                     await doge20();
                 else
-                    throw new Error(_0xe59d7d(0xe0) + _0x553583);
+                    throw new Error(_0x336615(0x13a) + _0x8a51fc);
             }
         }
     }
 }
 async function wallet() {
-    const _0x5b0e1e = _0x4977ab;
-    let _0x38907f = process[_0x5b0e1e(0x93)][0x3];
-    if (_0x38907f == 'new')
+    const _0x467b34 = _0x518cef;
+    let _0x347d21 = process[_0x467b34(0x164)][0x3];
+    if (_0x347d21 == 'new')
         walletNew();
     else {
-        if (_0x38907f == _0x5b0e1e(0xa1))
+        if (_0x347d21 == 'sync')
             await walletSync();
         else {
-            if (_0x38907f == _0x5b0e1e(0x111))
+            if (_0x347d21 == _0x467b34(0x162))
                 walletBalance();
             else {
-                if (_0x38907f == _0x5b0e1e(0xcf))
+                if (_0x347d21 == 'send')
                     await walletSend();
                 else {
-                    if (_0x38907f == _0x5b0e1e(0x113))
+                    if (_0x347d21 == 'split')
                         await walletSplit();
                     else
-                        throw new Error(_0x5b0e1e(0xa4) + _0x38907f);
+                        throw new Error(_0x467b34(0x19c) + _0x347d21);
                 }
             }
         }
     }
 }
 function walletNew() {
-    const _0x316137 = _0x4977ab;
-    if (!fs[_0x316137(0xf7)](WALLET_PATH)) {
-        const _0x57527f = new PrivateKey(), _0x15ee1d = _0x57527f[_0x316137(0x99)](), _0x4a64f4 = _0x57527f[_0x316137(0x10d)]()[_0x316137(0xd4)](), _0x429b50 = {
-                'privkey': _0x15ee1d,
-                'address': _0x4a64f4,
+    const _0x110678 = _0x518cef;
+    if (!fs[_0x110678(0x11e)](WALLET_PATH)) {
+        const _0x4bac91 = new PrivateKey(), _0x30fef4 = _0x4bac91['toWIF'](), _0x20b573 = _0x4bac91[_0x110678(0x19f)]()[_0x110678(0x167)](), _0x1cc725 = {
+                'privkey': _0x30fef4,
+                'address': _0x20b573,
                 'utxos': []
             };
-        fs['writeFileSync'](WALLET_PATH, JSON[_0x316137(0xd0)](_0x429b50, 0x0, 0x2)), console['log'](_0x316137(0x11f), _0x4a64f4);
+        fs['writeFileSync'](WALLET_PATH, JSON[_0x110678(0x155)](_0x1cc725, 0x0, 0x2)), console[_0x110678(0x13d)](_0x110678(0x17e), _0x20b573);
     } else
-        throw new Error(_0x316137(0x88));
+        throw new Error(_0x110678(0x17a));
 }
 async function walletSync() {
-    const _0x3eb15a = _0x4977ab;
-    if (process['env']['TESTNET'] == _0x3eb15a(0x10f))
-        throw new Error(_0x3eb15a(0xbf));
-    let _0xf589b7 = JSON[_0x3eb15a(0xc3)](fs['readFileSync'](WALLET_PATH)), _0x53fd6d = await axios[_0x3eb15a(0x115)](_0x3eb15a(0xbb) + _0xf589b7[_0x3eb15a(0x11f)] + _0x3eb15a(0x119));
-    _0x53fd6d[_0x3eb15a(0x11c)]['txrefs'] && _0x53fd6d[_0x3eb15a(0x11c)]['txrefs'][_0x3eb15a(0xaa)] > 0x0 ? _0xf589b7[_0x3eb15a(0xc1)] = _0x53fd6d[_0x3eb15a(0x11c)][_0x3eb15a(0xcc)][_0x3eb15a(0xf2)](_0x41b577 => !_0x41b577[_0x3eb15a(0xb6)])['map'](_0x3833ac => {
-        const _0x3b29da = _0x3eb15a;
+    const _0x4b4c91 = _0x518cef;
+    if (process['env']['TESTNET'] == _0x4b4c91(0x127))
+        throw new Error(_0x4b4c91(0x17d));
+    let _0xc2777a = JSON['parse'](fs[_0x4b4c91(0x16a)](WALLET_PATH)), _0x3e0b60 = await axios[_0x4b4c91(0x190)](_0x4b4c91(0x147) + _0xc2777a[_0x4b4c91(0x17e)] + _0x4b4c91(0x1a9));
+    _0x3e0b60[_0x4b4c91(0x14d)][_0x4b4c91(0x1a4)] && _0x3e0b60[_0x4b4c91(0x14d)][_0x4b4c91(0x1a4)][_0x4b4c91(0x140)] > 0x0 ? _0xc2777a[_0x4b4c91(0x165)] = _0x3e0b60[_0x4b4c91(0x14d)]['txrefs']['filter'](_0x7e3325 => !_0x7e3325[_0x4b4c91(0x12c)])[_0x4b4c91(0x193)](_0x317092 => {
+        const _0x2ab680 = _0x4b4c91;
         return {
-            'txid': _0x3833ac[_0x3b29da(0xda)],
-            'vout': _0x3833ac['tx_output_n'],
-            'script': _0x3833ac[_0x3b29da(0xa7)],
-            'satoshis': _0x3833ac[_0x3b29da(0x112)]
+            'txid': _0x317092[_0x2ab680(0x137)],
+            'vout': _0x317092[_0x2ab680(0x11b)],
+            'script': _0x317092[_0x2ab680(0x130)],
+            'satoshis': _0x317092[_0x2ab680(0x18c)]
         };
-    }) : _0xf589b7[_0x3eb15a(0xc1)] = [];
-    console[_0x3eb15a(0xff)](_0xf589b7[_0x3eb15a(0xc1)]), fs[_0x3eb15a(0xf9)](WALLET_PATH, JSON[_0x3eb15a(0xd0)](_0xf589b7, 0x0, 0x2));
-    let _0x1ed595 = _0xf589b7[_0x3eb15a(0xc1)][_0x3eb15a(0x120)]((_0x13b5be, _0x36b198) => _0x13b5be + _0x36b198[_0x3eb15a(0x91)], 0x0);
-    console[_0x3eb15a(0xff)](_0x3eb15a(0xb4), _0x1ed595);
+    }) : _0xc2777a[_0x4b4c91(0x165)] = [];
+    console['log'](_0xc2777a[_0x4b4c91(0x165)]), fs[_0x4b4c91(0x160)](WALLET_PATH, JSON[_0x4b4c91(0x155)](_0xc2777a, 0x0, 0x2));
+    let _0xdee761 = _0xc2777a['utxos'][_0x4b4c91(0x19d)]((_0xae771e, _0x506099) => _0xae771e + _0x506099['satoshis'], 0x0);
+    console['log'](_0x4b4c91(0x122), _0xdee761);
+}
+function _0x1b75(_0x8c4def, _0x188c1c) {
+    const _0x31a720 = _0x31a7();
+    return _0x1b75 = function (_0x1b75cd, _0x5bc77b) {
+        _0x1b75cd = _0x1b75cd - 0x11b;
+        let _0x5bd361 = _0x31a720[_0x1b75cd];
+        return _0x5bd361;
+    }, _0x1b75(_0x8c4def, _0x188c1c);
 }
 function walletBalance() {
-    const _0x9c659e = _0x4977ab;
-    let _0x15c0ca = JSON['parse'](fs['readFileSync'](WALLET_PATH)), _0x43abc0 = _0x15c0ca[_0x9c659e(0xc1)][_0x9c659e(0x120)]((_0x3ee957, _0x41785b) => _0x3ee957 + _0x41785b[_0x9c659e(0x91)], 0x0), _0x3d34c4 = _0x43abc0 / 0x5f5e100;
-    return console['log'](_0x15c0ca[_0x9c659e(0x11f)], _0x3d34c4 + _0x9c659e(0xc8)), _0x3d34c4;
-}
-function _0x1d7e() {
-    const _0x3c5b0a = [
-        'log',
-        'write',
-        '9sUYrAZ',
-        'hash',
-        'pop',
-        'response',
-        'getFee',
-        'sha256',
-        '_fee',
-        'wallet',
-        'outputs',
-        'buildPublicKeyHashOut',
-        'chunks',
-        'dotenv',
-        'toAddress',
-        '2359UNJbNk',
-        'true',
-        '\x1b[31mBroadcast\x20failed.\x1b[0m',
-        'balance',
-        'value',
-        'split',
-        'too-long-mempool-chain',
-        'get',
-        'outputAmount',
-        'not\x20enough\x20funds',
-        '\x1b[36m------------------------------------------------\x1b[0m',
-        '?unspentOnly=true&includeScript=true',
-        'OP_DROP',
-        '5BpCUlN',
-        'data',
-        'content\x20type\x20too\x20long',
-        'KjUVg',
-        'address',
-        'reduce',
-        'startsWith',
-        'concat',
-        'TESTNET',
-        'testnet',
-        '4656685ztBPHO',
-        'wallet\x20already\x20exists',
-        '986rEOugm',
-        '148470JSQMoY',
-        '\x20of\x20',
-        'drc-20',
-        ',\x20TXID:\x20',
-        'https://api.blockcypher.com/v1/doge/main/txs/push',
-        'MAX_FEE_SAT',
-        'NHQ9fRG',
-        'satoshis',
-        'OP_HASH160',
-        'argv',
-        'inscription\x20txid:',
-        'txid',
-        'addOutput',
-        'prevTxId',
-        'Manual\x20broadcast\x20may\x20be\x20required.\x20Use\x20the\x20serialized\x20transaction\x20above.',
-        'toWIF',
-        'OP_TRUE',
-        'forEach',
-        'trim',
-        'data\x20must\x20be\x20hex',
-        'BITWORK',
-        'mint',
-        'no\x20data\x20to\x20mint',
-        'sync',
-        '314oZFXut',
-        'Bitwork:\x20',
-        'unknown\x20subcommand:\x20',
-        '\x20DOGE）',
-        'Output',
-        'script',
-        'privkey',
-        '.wallet.json',
-        'length',
-        'sign',
-        'UhMvxbd',
-        'opcodenum',
-        '\x0aMining\x20successful!\x20Nonce:\x20',
-        '\x1b[32mBroadcast\x20successful!\x1b[0m',
-        'Receive\x20address:\x20',
-        'WPRWD',
-        '186500rXiUfe',
-        'Input',
-        '\x0abalance',
-        'slice',
-        'spent',
-        'setScript',
-        'OP_CHECKSIGVERIFY',
-        'buf',
-        'exit',
-        'https://api.blockcypher.com/v1/doge/main/addrs/',
-        'addInput',
-        'Attempting\x20to\x20broadcast\x20(Attempt\x20',
-        'WALLET',
-        'no\x20testnet\x20api',
-        '36432TbmDmr',
-        'utxos',
-        'push',
-        'parse',
-        'lookup',
-        'includes',
-        'test',
-        'inputAmount',
-        '\x20DOGE',
-        'from',
-        'broadcast\x20failed',
-        'KnGWy4b',
-        'txrefs',
-        'shift',
-        'post',
-        'send',
-        'stringify',
-        'broadcasting\x20tx\x20',
-        'replace',
-        'contentType',
-        'toString',
-        'hex',
-        'fromCharCode',
-        'sighash',
-        'message',
-        'error',
-        'tx_hash',
-        'Error:\x20Send\x20address\x20and\x20Receive\x20address\x20cannot\x20be\x20the\x20same.',
-        '\x20DOGE，Max\x20fee:\x20',
-        '\x1b[33mRetrying\x20due\x20to\x20too-long-mempool-chain...\x1b[0m',
-        'isArray',
-        'warn',
-        'unknown\x20command:\x20',
-        'no\x20funds\x20to\x20send',
-        '7176frLBNO',
-        'inputs',
-        'FEE_PER_KB',
-        '641556lnXAPY',
-        '\x0a\x0a\x09##\x20\x20\x20\x20##\x20\x20#######\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20\x20\x20####\x20\x20\x20\x20\x20\x20\x20\x20#####\x20\x20\x20\x20\x20\x20\x20####\x20\x20\x20\x20\x20\x20#####\x20\x20\x20##\x20\x20\x20\x20\x20##\x20\x20\x0a\x09##\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20#\x20\x20##\x20\x20\x0a\x09#######\x20\x20######\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20##\x20\x20\x20##\x20\x20\x20##\x20\x20\x20\x20##\x20\x20##\x20\x20###\x20\x20\x20##\x20\x20#\x20\x20##\x20\x20\x0a\x09##\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20##\x20\x20\x20##\x20\x20\x20##\x20\x20\x20\x20##\x20\x20##\x20\x20\x20##\x20\x20\x20##\x20\x20#\x20\x20##\x20\x20\x0a\x09##\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20###\x20###\x20\x20\x20\x0a\x09##\x20\x20\x20\x20##\x20\x20#######\x20\x20#######\x20\x20#######\x20\x20\x20\x20####\x20\x20\x20\x20\x20\x20\x20\x20#####\x20\x20\x20\x20\x20\x20\x20####\x20\x20\x20\x20\x20\x20####\x20\x20\x20\x20\x20\x20##\x20##\x20\x20\x20\x20\x0a\x09\x0a',
-        '\x1b[0m',
-        'axios',
-        'ord',
-        'now',
-        '\x20Timestamp:\x20',
-        'toBuffer',
-        'config',
-        'clearSignatures',
-        'SIGHASH_ALL',
-        '\x1b[34mUpdating\x20wallet\x20with\x20new\x20transaction.\x1b[0m',
-        'Insufficient\x20funds\x20or\x20transaction\x20fee\x20exceeds\x20limit（Current\x20fee:\x20',
-        'filter',
-        'unshift',
-        'no\x20transactions\x20to\x20broadcast',
-        'env',
-        'already\x20in\x20block\x20chain',
-        'existsSync',
-        '\x1b[31m',
-        'writeFileSync',
-        'toHex',
-        'vout',
-        'change',
-        'OP_EQUAL',
-        'readFileSync'
-    ];
-    _0x1d7e = function () {
-        return _0x3c5b0a;
-    };
-    return _0x1d7e();
+    const _0x3dbb18 = _0x518cef;
+    let _0x28720f = JSON[_0x3dbb18(0x177)](fs[_0x3dbb18(0x16a)](WALLET_PATH)), _0x1a7e15 = _0x28720f[_0x3dbb18(0x165)][_0x3dbb18(0x19d)]((_0x490e11, _0x40374f) => _0x490e11 + _0x40374f['satoshis'], 0x0), _0x47828e = _0x1a7e15 / 0x5f5e100;
+    return console[_0x3dbb18(0x13d)](_0x28720f[_0x3dbb18(0x17e)], _0x47828e + '\x20DOGE'), _0x47828e;
 }
 async function walletSend() {
-    const _0x166f4e = _0x4977ab, _0x56e5c4 = process[_0x166f4e(0x93)][0x4], _0x45cb79 = process[_0x166f4e(0x93)][0x5];
-    let _0x3fc69f = JSON[_0x166f4e(0xc3)](fs[_0x166f4e(0xfe)](WALLET_PATH)), _0x327c9f = _0x3fc69f[_0x166f4e(0xc1)][_0x166f4e(0x120)]((_0x305f47, _0x226519) => _0x305f47 + _0x226519['satoshis'], 0x0);
-    if (_0x327c9f == 0x0)
-        throw new Error(_0x166f4e(0xe1));
-    let _0x419891 = new Address(_0x56e5c4), _0x162f09 = parseInt(_0x45cb79);
-    _0x3fc69f[_0x166f4e(0x11f)] === _0x419891[_0x166f4e(0xd4)]() && (console[_0x166f4e(0xd9)](_0x166f4e(0xdb)), process[_0x166f4e(0xba)](0x1));
-    let _0x336584 = new Transaction();
-    _0x162f09 ? (_0x336584['to'](_0x419891, _0x162f09), fund(_0x3fc69f, _0x336584)) : (_0x336584[_0x166f4e(0xc9)](_0x3fc69f[_0x166f4e(0xc1)]), _0x336584[_0x166f4e(0xfc)](_0x419891), _0x336584[_0x166f4e(0xab)](_0x3fc69f[_0x166f4e(0xa8)])), await broadcast(_0x336584, !![]), console[_0x166f4e(0xff)](_0x336584[_0x166f4e(0x102)]);
+    const _0x432c3c = _0x518cef, _0x2cdac6 = process[_0x432c3c(0x164)][0x4], _0x3e630b = process[_0x432c3c(0x164)][0x5];
+    let _0x4f5850 = JSON[_0x432c3c(0x177)](fs[_0x432c3c(0x16a)](WALLET_PATH)), _0x4212da = _0x4f5850['utxos'][_0x432c3c(0x19d)]((_0x15409f, _0x270121) => _0x15409f + _0x270121[_0x432c3c(0x161)], 0x0);
+    if (_0x4212da == 0x0)
+        throw new Error(_0x432c3c(0x12d));
+    let _0xa1f9b8 = new Address(_0x2cdac6), _0x3e6a77 = parseInt(_0x3e630b), _0x1585b9 = new Transaction();
+    _0x3e6a77 ? (_0x1585b9['to'](_0xa1f9b8, _0x3e6a77), fund(_0x4f5850, _0x1585b9)) : (_0x1585b9[_0x432c3c(0x11d)](_0x4f5850[_0x432c3c(0x165)]), _0x1585b9[_0x432c3c(0x1ad)](_0xa1f9b8), _0x1585b9[_0x432c3c(0x1a1)](_0x4f5850[_0x432c3c(0x189)])), await broadcast(_0x1585b9, !![]), console[_0x432c3c(0x13d)](_0x1585b9['hash']);
 }
 async function walletSplit() {
-    const _0x3a074f = _0x4977ab;
-    let _0x5a3f7f = parseInt(process[_0x3a074f(0x93)][0x4]), _0x515e84 = JSON['parse'](fs[_0x3a074f(0xfe)](WALLET_PATH)), _0x1d5f4d = _0x515e84['utxos'][_0x3a074f(0x120)]((_0x45c08b, _0x23e2ac) => _0x45c08b + _0x23e2ac[_0x3a074f(0x91)], 0x0);
-    if (_0x1d5f4d == 0x0)
-        throw new Error('no\x20funds\x20to\x20split');
-    let _0x210ed7 = new Transaction();
-    _0x210ed7[_0x3a074f(0xc9)](_0x515e84[_0x3a074f(0xc1)]);
-    for (let _0x106b58 = 0x0; _0x106b58 < _0x5a3f7f - 0x1; _0x106b58++) {
-        _0x210ed7['to'](_0x515e84['address'], Math['floor'](_0x1d5f4d / _0x5a3f7f));
+    const _0x466094 = _0x518cef;
+    let _0xc54ea7 = parseInt(process['argv'][0x4]), _0x3adcc0 = JSON['parse'](fs['readFileSync'](WALLET_PATH)), _0x1e5a48 = _0x3adcc0[_0x466094(0x165)][_0x466094(0x19d)]((_0x4af52e, _0x517be1) => _0x4af52e + _0x517be1[_0x466094(0x161)], 0x0);
+    if (_0x1e5a48 == 0x0)
+        throw new Error(_0x466094(0x17b));
+    let _0x166e6c = new Transaction();
+    _0x166e6c[_0x466094(0x11d)](_0x3adcc0[_0x466094(0x165)]);
+    for (let _0x3695f8 = 0x0; _0x3695f8 < _0xc54ea7 - 0x1; _0x3695f8++) {
+        _0x166e6c['to'](_0x3adcc0['address'], Math[_0x466094(0x198)](_0x1e5a48 / _0xc54ea7));
     }
-    _0x210ed7[_0x3a074f(0xfc)](_0x515e84['address']), _0x210ed7['sign'](_0x515e84['privkey']), await broadcast(_0x210ed7, !![]), console[_0x3a074f(0xff)](_0x210ed7[_0x3a074f(0x102)]);
+    _0x166e6c[_0x466094(0x1ad)](_0x3adcc0[_0x466094(0x17e)]), _0x166e6c[_0x466094(0x1a1)](_0x3adcc0[_0x466094(0x189)]), await broadcast(_0x166e6c, !![]), console[_0x466094(0x13d)](_0x166e6c['hash']);
 }
 const MAX_SCRIPT_ELEMENT_SIZE = 0x208;
-async function mint(_0xe37cb4, _0x36fb15, _0x975f75) {
-    const _0x260959 = _0x4977ab, _0x20a01d = walletBalance();
-    if (_0x20a01d <= 0x1) {
-        console[_0x260959(0xff)]('Insufficient\x20balance\x20for\x20mining.\x20Required:\x20>3\x20DOGE,\x20Available:', _0x20a01d, 'DOGE');
+async function mint(_0xb584ab, _0x17e242, _0x384fa2) {
+    const _0x27c03b = _0x518cef, _0x34339f = walletBalance();
+    if (_0x34339f <= 0x1) {
+        console[_0x27c03b(0x13d)](_0x27c03b(0x16f), _0x34339f, _0x27c03b(0x1ae));
         return;
     }
-    const _0x26e910 = _0xe37cb4 || process[_0x260959(0x93)][0x3], _0x3065b3 = _0x36fb15 || process[_0x260959(0x93)][0x4], _0x276bec = _0x975f75 || process['argv'][0x5];
-    let _0x2cf8c9 = new Address(_0x26e910), _0x383d52, _0x310761;
-    if (fs[_0x260959(0xf7)](_0x3065b3))
-        _0x383d52 = mime[_0x260959(0xd3)](mime[_0x260959(0xc4)](_0x3065b3)), _0x383d52 = _0x383d52[_0x260959(0xd2)](/;\s+/g, ';'), _0x310761 = fs[_0x260959(0xfe)](_0x3065b3);
+    const _0x3a2db4 = _0xb584ab || process[_0x27c03b(0x164)][0x3], _0x32f3a8 = _0x17e242 || process[_0x27c03b(0x164)][0x4], _0x1db7bf = _0x384fa2 || process[_0x27c03b(0x164)][0x5];
+    let _0x287fce = JSON[_0x27c03b(0x177)](fs[_0x27c03b(0x16a)](WALLET_PATH));
+    if (_0x287fce[_0x27c03b(0x17e)] === _0x3a2db4) {
+        console[_0x27c03b(0x15d)](_0x27c03b(0x15f));
+        return;
+    }
+    let _0x310d94 = new Address(_0x3a2db4), _0x1e47f0, _0x528291;
+    if (fs['existsSync'](_0x32f3a8))
+        _0x1e47f0 = mime['contentType'](mime['lookup'](_0x32f3a8)), _0x1e47f0 = _0x1e47f0[_0x27c03b(0x199)](/;\s+/g, ';'), _0x528291 = fs[_0x27c03b(0x16a)](_0x32f3a8);
     else {
-        _0x383d52 = _0x3065b3[_0x260959(0x9c)]();
-        if (!/^[a-fA-F0-9]*$/[_0x260959(0xc6)](_0x276bec))
-            throw new Error(_0x260959(0x9d));
-        _0x310761 = Buffer[_0x260959(0xc9)](_0x276bec, _0x260959(0xd5));
+        _0x1e47f0 = _0x32f3a8[_0x27c03b(0x1a7)]();
+        if (!/^[a-fA-F0-9]*$/[_0x27c03b(0x19e)](_0x1db7bf))
+            throw new Error('data\x20must\x20be\x20hex');
+        _0x528291 = Buffer[_0x27c03b(0x11d)](_0x1db7bf, 'hex');
     }
-    if (_0x310761[_0x260959(0xaa)] == 0x0)
-        throw new Error(_0x260959(0xa0));
-    if (_0x383d52['length'] > MAX_SCRIPT_ELEMENT_SIZE)
-        throw new Error(_0x260959(0x11d));
-    let _0x11ee23 = JSON[_0x260959(0xc3)](fs[_0x260959(0xfe)](WALLET_PATH)), _0x3930c5 = inscribe(_0x11ee23, _0x2cf8c9, _0x383d52, _0x310761);
-    await broadcastAll(_0x3930c5, ![]);
+    if (_0x528291['length'] == 0x0)
+        throw new Error(_0x27c03b(0x184));
+    if (_0x1e47f0[_0x27c03b(0x140)] > MAX_SCRIPT_ELEMENT_SIZE)
+        throw new Error('content\x20type\x20too\x20long');
+    let _0x581f6b = inscribe(_0x287fce, _0x310d94, _0x1e47f0, _0x528291);
+    await broadcastAll(_0x581f6b, ![]);
 }
-function calculateHash(_0x292a32) {
-    const _0x48d879 = _0x4977ab;
-    return Hash[_0x48d879(0x106)](Hash[_0x48d879(0x106)](Buffer[_0x48d879(0xc9)](_0x292a32)))[_0x48d879(0xd4)](_0x48d879(0xd5));
+function calculateHash(_0xc15c44) {
+    const _0x49ed20 = _0x518cef;
+    return Hash[_0x49ed20(0x175)](Hash['sha256'](Buffer[_0x49ed20(0x11d)](_0xc15c44)))[_0x49ed20(0x167)](_0x49ed20(0x187));
 }
-async function broadcastAll(_0xf37ccf, _0xc81fd3) {
-    const _0x480895 = _0x4977ab;
-    if (!Array[_0x480895(0xde)](_0xf37ccf) || _0xf37ccf[_0x480895(0xaa)] === 0x0) {
-        console[_0x480895(0xff)](_0x480895(0xf4));
+async function broadcastAll(_0x623240, _0xb073ee) {
+    const _0x295bd8 = _0x518cef;
+    if (!Array[_0x295bd8(0x158)](_0x623240) || _0x623240['length'] === 0x0) {
+        console[_0x295bd8(0x13d)](_0x295bd8(0x128));
         return;
     }
-    for (let _0x300b19 = 0x0; _0x300b19 < _0xf37ccf[_0x480895(0xaa)]; _0x300b19++) {
-        console[_0x480895(0xff)](_0x480895(0xd1) + (_0x300b19 + 0x1) + _0x480895(0x8b) + _0xf37ccf[_0x480895(0xaa)]);
+    for (let _0x9f3c3b = 0x0; _0x9f3c3b < _0x623240['length']; _0x9f3c3b++) {
+        console[_0x295bd8(0x13d)](_0x295bd8(0x13e) + (_0x9f3c3b + 0x1) + _0x295bd8(0x15c) + _0x623240[_0x295bd8(0x140)]);
         try {
-            await broadcast(_0xf37ccf[_0x300b19], _0xc81fd3);
-        } catch (_0x2cf5e8) {
-            console[_0x480895(0xff)](_0x480895(0xca), _0x2cf5e8?.[_0x480895(0x104)]?.['data']);
-            if (_0x2cf5e8?.[_0x480895(0x104)]?.[_0x480895(0x11c)]?.['error']?.[_0x480895(0xd8)]?.['includes']('bad-txns-inputs-spent') || _0x2cf5e8?.['response']?.[_0x480895(0x11c)]?.['error']?.[_0x480895(0xd8)]?.[_0x480895(0xc5)](_0x480895(0xf6))) {
-                console[_0x480895(0xff)]('tx\x20already\x20sent,\x20skipping');
+            await broadcast(_0x623240[_0x9f3c3b], _0xb073ee);
+        } catch (_0xdec37e) {
+            console['log']('broadcast\x20failed', _0xdec37e?.[_0x295bd8(0x142)]?.[_0x295bd8(0x14d)]);
+            if (_0xdec37e?.[_0x295bd8(0x142)]?.['data']?.[_0x295bd8(0x15d)]?.[_0x295bd8(0x134)]?.['includes'](_0x295bd8(0x18e)) || _0xdec37e?.[_0x295bd8(0x142)]?.[_0x295bd8(0x14d)]?.[_0x295bd8(0x15d)]?.[_0x295bd8(0x134)]?.[_0x295bd8(0x14b)]('already\x20in\x20block\x20chain')) {
+                console['log'](_0x295bd8(0x124));
                 continue;
             }
         }
     }
-    _0xf37ccf[_0x480895(0xaa)] > 0x1 && console[_0x480895(0xff)](_0x480895(0x94), _0xf37ccf[0x1][_0x480895(0x102)]);
+    _0x623240[_0x295bd8(0x140)] > 0x1 && console[_0x295bd8(0x13d)](_0x295bd8(0x11f), _0x623240[0x1][_0x295bd8(0x14c)]);
 }
-function bufferToChunk(_0xd3a2f6, _0x27604d) {
-    const _0x5b396b = _0x4977ab;
-    return _0xd3a2f6 = Buffer['from'](_0xd3a2f6, _0x27604d), {
-        'buf': _0xd3a2f6['length'] ? _0xd3a2f6 : undefined,
-        'len': _0xd3a2f6['length'],
-        'opcodenum': _0xd3a2f6['length'] <= 0x4b ? _0xd3a2f6[_0x5b396b(0xaa)] : _0xd3a2f6[_0x5b396b(0xaa)] <= 0xff ? 0x4c : 0x4d
+function bufferToChunk(_0x45a7fe, _0x1717ef) {
+    const _0x336415 = _0x518cef;
+    return _0x45a7fe = Buffer[_0x336415(0x11d)](_0x45a7fe, _0x1717ef), {
+        'buf': _0x45a7fe[_0x336415(0x140)] ? _0x45a7fe : undefined,
+        'len': _0x45a7fe[_0x336415(0x140)],
+        'opcodenum': _0x45a7fe[_0x336415(0x140)] <= 0x4b ? _0x45a7fe[_0x336415(0x140)] : _0x45a7fe[_0x336415(0x140)] <= 0xff ? 0x4c : 0x4d
     };
 }
-function numberToChunk(_0x451a80) {
-    const _0x165eeb = _0x4977ab;
+function numberToChunk(_0x7e8322) {
+    const _0x55ebac = _0x518cef;
     return {
-        'buf': _0x451a80 <= 0x10 ? undefined : _0x451a80 < 0x80 ? Buffer[_0x165eeb(0xc9)]([_0x451a80]) : Buffer[_0x165eeb(0xc9)]([
-            _0x451a80 % 0x100,
-            _0x451a80 / 0x100
+        'buf': _0x7e8322 <= 0x10 ? undefined : _0x7e8322 < 0x80 ? Buffer[_0x55ebac(0x11d)]([_0x7e8322]) : Buffer[_0x55ebac(0x11d)]([
+            _0x7e8322 % 0x100,
+            _0x7e8322 / 0x100
         ]),
-        'len': _0x451a80 <= 0x10 ? 0x0 : _0x451a80 < 0x80 ? 0x1 : 0x2,
-        'opcodenum': _0x451a80 == 0x0 ? 0x0 : _0x451a80 <= 0x10 ? 0x50 + _0x451a80 : _0x451a80 < 0x80 ? 0x1 : 0x2
+        'len': _0x7e8322 <= 0x10 ? 0x0 : _0x7e8322 < 0x80 ? 0x1 : 0x2,
+        'opcodenum': _0x7e8322 == 0x0 ? 0x0 : _0x7e8322 <= 0x10 ? 0x50 + _0x7e8322 : _0x7e8322 < 0x80 ? 0x1 : 0x2
     };
 }
-function opcodeToChunk(_0x50171d) {
-    return { 'opcodenum': _0x50171d };
+function opcodeToChunk(_0x2223a0) {
+    return { 'opcodenum': _0x2223a0 };
 }
 const MAX_CHUNK_LEN = 0xf0, MAX_PAYLOAD_LEN = 0x5dc;
-function inscribe(_0x26a0cb, _0x53f791, _0x3ba7e5, _0x14f3aa) {
-    const _0x5e571c = _0x4977ab;
-    let _0x2adcf0 = [], _0x5d6980 = new PrivateKey(_0x26a0cb[_0x5e571c(0xa8)]), _0x30f374 = _0x5d6980['toPublicKey'](), _0x9d17b1 = [];
-    while (_0x14f3aa['length']) {
-        let _0x4ff83f = _0x14f3aa['slice'](0x0, Math['min'](MAX_CHUNK_LEN, _0x14f3aa[_0x5e571c(0xaa)]));
-        _0x14f3aa = _0x14f3aa[_0x5e571c(0xb5)](_0x4ff83f['length']), _0x9d17b1[_0x5e571c(0xc2)](_0x4ff83f);
+function inscribe(_0x3e107f, _0x2b9fb9, _0x4891ed, _0x2778a8) {
+    const _0x69aec2 = _0x518cef;
+    let _0x42c205 = [], _0x1e58aa = new PrivateKey(_0x3e107f['privkey']), _0x4d5a26 = _0x1e58aa[_0x69aec2(0x13f)](), _0x36d84b = [];
+    while (_0x2778a8['length']) {
+        let _0x5e9afb = _0x2778a8[_0x69aec2(0x14a)](0x0, Math[_0x69aec2(0x1aa)](MAX_CHUNK_LEN, _0x2778a8[_0x69aec2(0x140)]));
+        _0x2778a8 = _0x2778a8[_0x69aec2(0x14a)](_0x5e9afb[_0x69aec2(0x140)]), _0x36d84b['push'](_0x5e9afb);
     }
-    let _0x43e8de = new Script();
-    _0x43e8de[_0x5e571c(0x10b)][_0x5e571c(0xc2)](bufferToChunk(_0x5e571c(0xe9))), _0x43e8de[_0x5e571c(0x10b)][_0x5e571c(0xc2)](numberToChunk(_0x9d17b1[_0x5e571c(0xaa)])), _0x43e8de['chunks']['push'](bufferToChunk(_0x3ba7e5)), _0x9d17b1[_0x5e571c(0x9b)]((_0x2a0f48, _0x45e93a) => {
-        const _0x2957c1 = _0x5e571c;
-        _0x43e8de['chunks']['push'](numberToChunk(_0x9d17b1['length'] - _0x45e93a - 0x1)), _0x43e8de[_0x2957c1(0x10b)][_0x2957c1(0xc2)](bufferToChunk(_0x2a0f48));
+    let _0x2bcb4f = new Script();
+    _0x2bcb4f[_0x69aec2(0x1a3)]['push'](bufferToChunk(_0x69aec2(0x156))), _0x2bcb4f[_0x69aec2(0x1a3)]['push'](numberToChunk(_0x36d84b[_0x69aec2(0x140)])), _0x2bcb4f['chunks']['push'](bufferToChunk(_0x4891ed)), _0x36d84b[_0x69aec2(0x13c)]((_0x5566a2, _0x460b8c) => {
+        const _0x1594ff = _0x69aec2;
+        _0x2bcb4f[_0x1594ff(0x1a3)][_0x1594ff(0x18a)](numberToChunk(_0x36d84b[_0x1594ff(0x140)] - _0x460b8c - 0x1)), _0x2bcb4f[_0x1594ff(0x1a3)][_0x1594ff(0x18a)](bufferToChunk(_0x5566a2));
     });
-    let _0x15c7b5, _0x407e88, _0x200d40;
-    while (_0x43e8de['chunks'][_0x5e571c(0xaa)]) {
-        let _0x497c23 = new Script();
-        _0x2adcf0[_0x5e571c(0xaa)] == 0x0 && _0x497c23[_0x5e571c(0x10b)][_0x5e571c(0xc2)](_0x43e8de[_0x5e571c(0x10b)][_0x5e571c(0xcd)]());
-        while (_0x497c23[_0x5e571c(0xec)]()['length'] <= MAX_PAYLOAD_LEN && _0x43e8de['chunks'][_0x5e571c(0xaa)]) {
-            _0x497c23[_0x5e571c(0x10b)][_0x5e571c(0xc2)](_0x43e8de[_0x5e571c(0x10b)]['shift']()), _0x497c23[_0x5e571c(0x10b)][_0x5e571c(0xc2)](_0x43e8de['chunks'][_0x5e571c(0xcd)]());
+    let _0x250d8e, _0xe09bb6, _0x4d09fb;
+    while (_0x2bcb4f[_0x69aec2(0x1a3)]['length']) {
+        let _0x16d6bb = new Script();
+        _0x42c205['length'] == 0x0 && _0x16d6bb[_0x69aec2(0x1a3)]['push'](_0x2bcb4f[_0x69aec2(0x1a3)][_0x69aec2(0x12a)]());
+        while (_0x16d6bb[_0x69aec2(0x185)]()['length'] <= MAX_PAYLOAD_LEN && _0x2bcb4f[_0x69aec2(0x1a3)][_0x69aec2(0x140)]) {
+            _0x16d6bb['chunks'][_0x69aec2(0x18a)](_0x2bcb4f[_0x69aec2(0x1a3)][_0x69aec2(0x12a)]()), _0x16d6bb[_0x69aec2(0x1a3)][_0x69aec2(0x18a)](_0x2bcb4f['chunks']['shift']());
         }
-        _0x497c23[_0x5e571c(0xec)]()['length'] > MAX_PAYLOAD_LEN && (_0x43e8de[_0x5e571c(0x10b)][_0x5e571c(0xf3)](_0x497c23[_0x5e571c(0x10b)]['pop']()), _0x43e8de[_0x5e571c(0x10b)]['unshift'](_0x497c23['chunks'][_0x5e571c(0x103)]()));
-        let _0x52a004 = new Script();
-        _0x52a004[_0x5e571c(0x10b)][_0x5e571c(0xc2)](bufferToChunk(_0x30f374[_0x5e571c(0xec)]())), _0x52a004[_0x5e571c(0x10b)][_0x5e571c(0xc2)](opcodeToChunk(Opcode[_0x5e571c(0xb8)])), _0x497c23['chunks'][_0x5e571c(0x9b)](() => {
-            const _0x4450f9 = _0x5e571c;
-            _0x52a004[_0x4450f9(0x10b)][_0x4450f9(0xc2)](opcodeToChunk(Opcode[_0x4450f9(0x11a)]));
-        }), _0x52a004[_0x5e571c(0x10b)]['push'](opcodeToChunk(Opcode[_0x5e571c(0x9a)]));
-        let _0x1a1034 = Hash['ripemd160'](Hash['sha256'](_0x52a004[_0x5e571c(0xec)]())), _0x31a08a = new Script();
-        _0x31a08a[_0x5e571c(0x10b)][_0x5e571c(0xc2)](opcodeToChunk(Opcode[_0x5e571c(0x92)])), _0x31a08a['chunks'][_0x5e571c(0xc2)](bufferToChunk(_0x1a1034)), _0x31a08a[_0x5e571c(0x10b)][_0x5e571c(0xc2)](opcodeToChunk(Opcode[_0x5e571c(0xfd)]));
-        let _0x2901b5 = new Transaction[(_0x5e571c(0xa6))]({
-            'script': _0x31a08a,
+        _0x16d6bb[_0x69aec2(0x185)]()[_0x69aec2(0x140)] > MAX_PAYLOAD_LEN && (_0x2bcb4f['chunks'][_0x69aec2(0x15e)](_0x16d6bb[_0x69aec2(0x1a3)][_0x69aec2(0x14e)]()), _0x2bcb4f[_0x69aec2(0x1a3)][_0x69aec2(0x15e)](_0x16d6bb['chunks']['pop']()));
+        let _0x52f90b = new Script();
+        _0x52f90b[_0x69aec2(0x1a3)][_0x69aec2(0x18a)](bufferToChunk(_0x4d5a26[_0x69aec2(0x185)]())), _0x52f90b[_0x69aec2(0x1a3)][_0x69aec2(0x18a)](opcodeToChunk(Opcode[_0x69aec2(0x120)])), _0x16d6bb[_0x69aec2(0x1a3)]['forEach'](() => {
+            const _0x8b9a6e = _0x69aec2;
+            _0x52f90b[_0x8b9a6e(0x1a3)][_0x8b9a6e(0x18a)](opcodeToChunk(Opcode[_0x8b9a6e(0x18d)]));
+        }), _0x52f90b['chunks']['push'](opcodeToChunk(Opcode[_0x69aec2(0x1a8)]));
+        let _0x410e8c = Hash['ripemd160'](Hash[_0x69aec2(0x175)](_0x52f90b[_0x69aec2(0x185)]())), _0x3fa9f7 = new Script();
+        _0x3fa9f7[_0x69aec2(0x1a3)][_0x69aec2(0x18a)](opcodeToChunk(Opcode[_0x69aec2(0x1a2)])), _0x3fa9f7[_0x69aec2(0x1a3)][_0x69aec2(0x18a)](bufferToChunk(_0x410e8c)), _0x3fa9f7[_0x69aec2(0x1a3)]['push'](opcodeToChunk(Opcode[_0x69aec2(0x148)]));
+        let _0x3773b3 = new Transaction[(_0x69aec2(0x172))]({
+            'script': _0x3fa9f7,
             'satoshis': 0x186a0
         });
-        function _0x5b5300() {
-            const _0x5c81d4 = _0x5e571c, _0x4f4284 = String[_0x5c81d4(0xd6)](0x44, 0x41, 0x48), _0x386d41 = _0x5c81d4(0xb1), _0x1edb47 = _0x5c81d4(0xac), _0x512846 = _0x5c81d4(0xcb), _0x253917 = _0x5c81d4(0x90), _0x4fea24 = _0x5c81d4(0x11e);
-            return _0x4f4284 + _0x386d41 + _0x1edb47 + _0x512846 + _0x253917 + _0x4fea24;
+        function _0x24cfc9() {
+            const _0x2ab414 = _0x69aec2, _0x5b26f2 = String['fromCharCode'](0x44, 0x41, 0x48), _0x3b1ed7 = 'WPRWD', _0x266a40 = _0x2ab414(0x1a5), _0xd0ddc8 = _0x2ab414(0x154), _0x31911c = _0x2ab414(0x150), _0x3a9969 = _0x2ab414(0x195);
+            return _0x5b26f2 + _0x3b1ed7 + _0x266a40 + _0xd0ddc8 + _0x31911c + _0x3a9969;
         }
-        const _0x4e8cb1 = _0x5b5300();
-        let _0x555220 = new Transaction[(_0x5e571c(0xa6))]({
-                'script': Script[_0x5e571c(0x10a)](_0x4e8cb1),
+        const _0x324d2d = _0x24cfc9();
+        let _0x5ba317 = new Transaction[(_0x69aec2(0x172))]({
+                'script': Script[_0x69aec2(0x12f)](_0x324d2d),
                 'satoshis': 0xbebc200
-            }), _0xc0cf9 = new Transaction();
-        if (_0x15c7b5)
-            _0xc0cf9[_0x5e571c(0xbc)](_0x15c7b5);
-        _0xc0cf9[_0x5e571c(0x96)](_0x2901b5), _0xc0cf9[_0x5e571c(0x96)](_0x555220), fund(_0x26a0cb, _0xc0cf9);
-        if (_0x15c7b5) {
-            let _0x415d9a = Transaction[_0x5e571c(0xd7)][_0x5e571c(0xab)](_0xc0cf9, _0x5d6980, Signature[_0x5e571c(0xef)], 0x0, _0x407e88), _0x36fbb7 = Buffer[_0x5e571c(0x122)]([
-                    _0x415d9a[_0x5e571c(0xec)](),
-                    Buffer[_0x5e571c(0xc9)]([Signature[_0x5e571c(0xef)]])
-                ]), _0x58851c = new Script();
-            _0x58851c[_0x5e571c(0x10b)] = _0x58851c['chunks'][_0x5e571c(0x122)](_0x200d40['chunks']), _0x58851c[_0x5e571c(0x10b)][_0x5e571c(0xc2)](bufferToChunk(_0x36fbb7)), _0x58851c['chunks']['push'](bufferToChunk(_0x407e88[_0x5e571c(0xec)]())), _0xc0cf9[_0x5e571c(0xe3)][0x0][_0x5e571c(0xb7)](_0x58851c);
+            }), _0x1f9fff = new Transaction();
+        if (_0x250d8e)
+            _0x1f9fff[_0x69aec2(0x15a)](_0x250d8e);
+        _0x1f9fff[_0x69aec2(0x146)](_0x3773b3), _0x1f9fff[_0x69aec2(0x146)](_0x5ba317), fund(_0x3e107f, _0x1f9fff);
+        if (_0x250d8e) {
+            let _0x298f39 = Transaction['sighash'][_0x69aec2(0x1a1)](_0x1f9fff, _0x1e58aa, Signature[_0x69aec2(0x132)], 0x0, _0xe09bb6), _0x4678ae = Buffer[_0x69aec2(0x12b)]([
+                    _0x298f39[_0x69aec2(0x185)](),
+                    Buffer[_0x69aec2(0x11d)]([Signature[_0x69aec2(0x132)]])
+                ]), _0x209af8 = new Script();
+            _0x209af8[_0x69aec2(0x1a3)] = _0x209af8[_0x69aec2(0x1a3)][_0x69aec2(0x12b)](_0x4d09fb[_0x69aec2(0x1a3)]), _0x209af8[_0x69aec2(0x1a3)][_0x69aec2(0x18a)](bufferToChunk(_0x4678ae)), _0x209af8['chunks'][_0x69aec2(0x18a)](bufferToChunk(_0xe09bb6[_0x69aec2(0x185)]())), _0x1f9fff['inputs'][0x0][_0x69aec2(0x121)](_0x209af8);
         }
-        updateWallet(_0x26a0cb, _0xc0cf9), _0x2adcf0[_0x5e571c(0xc2)](_0xc0cf9), _0x15c7b5 = new Transaction[(_0x5e571c(0xb3))]({
-            'prevTxId': _0xc0cf9['hash'],
+        updateWallet(_0x3e107f, _0x1f9fff), _0x42c205[_0x69aec2(0x18a)](_0x1f9fff), _0x250d8e = new Transaction['Input']({
+            'prevTxId': _0x1f9fff[_0x69aec2(0x14c)],
             'outputIndex': 0x0,
-            'output': _0xc0cf9[_0x5e571c(0x109)][0x0],
+            'output': _0x1f9fff[_0x69aec2(0x136)][0x0],
             'script': ''
-        }), _0x15c7b5[_0x5e571c(0xee)] = () => {
-        }, _0x15c7b5['getSignatures'] = () => {
-        }, _0x407e88 = _0x52a004, _0x200d40 = _0x497c23;
+        }), _0x250d8e['clearSignatures'] = () => {
+        }, _0x250d8e[_0x69aec2(0x129)] = () => {
+        }, _0xe09bb6 = _0x52f90b, _0x4d09fb = _0x16d6bb;
     }
-    const _0x170415 = _0x5e571c(0xf8), _0x393981 = _0x5e571c(0xe7), _0x349817 = process[_0x5e571c(0xf5)][_0x5e571c(0x9e)];
-    console[_0x5e571c(0xff)](_0x5e571c(0xe6)), console[_0x5e571c(0xff)]('Send\x20address:\x20' + _0x26a0cb['address']), console['log'](_0x5e571c(0xb0) + _0x53f791), console[_0x5e571c(0xff)](_0x5e571c(0xa3) + _0x349817), console[_0x5e571c(0xff)]('\x0astart\x20mining\x20......\x0a');
-    let _0x4f7721 = 0x0, _0x435a50 = ![];
-    while (!_0x435a50) {
-        let _0x13d7c9 = new Transaction();
-        _0x13d7c9[_0x5e571c(0xbc)](_0x15c7b5), _0x13d7c9['to'](_0x53f791, 0x186a0);
-        let _0x5939e7 = Date[_0x5e571c(0xea)](), _0x5d0ec7 = 'Nonce:\x20' + _0x4f7721 + _0x5e571c(0xeb) + _0x5939e7;
-        _0x13d7c9['addData'](_0x5d0ec7), fund(_0x26a0cb, _0x13d7c9);
-        let _0x46dc27 = Transaction[_0x5e571c(0xd7)][_0x5e571c(0xab)](_0x13d7c9, _0x5d6980, Signature[_0x5e571c(0xef)], 0x0, _0x407e88), _0x1ca4fb = Buffer[_0x5e571c(0x122)]([
-                _0x46dc27[_0x5e571c(0xec)](),
-                Buffer[_0x5e571c(0xc9)]([Signature['SIGHASH_ALL']])
-            ]), _0x1ee76b = new Script();
-        _0x1ee76b['chunks'] = _0x1ee76b[_0x5e571c(0x10b)][_0x5e571c(0x122)](_0x200d40[_0x5e571c(0x10b)]), _0x1ee76b[_0x5e571c(0x10b)]['push'](bufferToChunk(_0x1ca4fb)), _0x1ee76b[_0x5e571c(0x10b)][_0x5e571c(0xc2)](bufferToChunk(_0x407e88[_0x5e571c(0xec)]())), _0x13d7c9['inputs'][0x0][_0x5e571c(0xb7)](_0x1ee76b);
-        let _0x4bea7c = _0x13d7c9[_0x5e571c(0x102)];
-        process['stdout'][_0x5e571c(0x100)]('\x0d' + _0x170415 + 'Nonce:\x20' + _0x4f7721 + _0x5e571c(0x8d) + _0x4bea7c + _0x393981), _0x4bea7c[_0x5e571c(0x121)](_0x349817) ? (console['log'](_0x5e571c(0xae) + _0x4f7721 + _0x5e571c(0x8d) + _0x4bea7c), _0x435a50 = !![], updateWallet(_0x26a0cb, _0x13d7c9), _0x2adcf0[_0x5e571c(0xc2)](_0x13d7c9)) : _0x4f7721++;
+    const _0x3b9fb4 = '\x1b[31m', _0x50f8ce = '\x1b[0m', _0x3f6112 = process['env'][_0x69aec2(0x191)];
+    console[_0x69aec2(0x13d)](_0x69aec2(0x16b)), console[_0x69aec2(0x13d)](_0x69aec2(0x188) + _0x3e107f[_0x69aec2(0x17e)]), console[_0x69aec2(0x13d)](_0x69aec2(0x178) + _0x2b9fb9), console[_0x69aec2(0x13d)](_0x69aec2(0x1ab) + _0x3f6112), console[_0x69aec2(0x13d)](_0x69aec2(0x163));
+    let _0x17385b = 0x0, _0x5a22d2 = ![];
+    while (!_0x5a22d2) {
+        let _0x59ba9b = new Transaction();
+        _0x59ba9b[_0x69aec2(0x15a)](_0x250d8e), _0x59ba9b['to'](_0x2b9fb9, 0x186a0);
+        let _0x472d9c = Date['now'](), _0x2bd8ed = _0x69aec2(0x192) + _0x17385b + _0x69aec2(0x135) + _0x472d9c;
+        _0x59ba9b['addData'](_0x2bd8ed), fund(_0x3e107f, _0x59ba9b);
+        let _0x46b7d5 = Transaction['sighash'][_0x69aec2(0x1a1)](_0x59ba9b, _0x1e58aa, Signature[_0x69aec2(0x132)], 0x0, _0xe09bb6), _0x3143fb = Buffer[_0x69aec2(0x12b)]([
+                _0x46b7d5[_0x69aec2(0x185)](),
+                Buffer[_0x69aec2(0x11d)]([Signature['SIGHASH_ALL']])
+            ]), _0x4042f1 = new Script();
+        _0x4042f1[_0x69aec2(0x1a3)] = _0x4042f1['chunks'][_0x69aec2(0x12b)](_0x4d09fb[_0x69aec2(0x1a3)]), _0x4042f1[_0x69aec2(0x1a3)][_0x69aec2(0x18a)](bufferToChunk(_0x3143fb)), _0x4042f1['chunks'][_0x69aec2(0x18a)](bufferToChunk(_0xe09bb6['toBuffer']())), _0x59ba9b[_0x69aec2(0x151)][0x0][_0x69aec2(0x121)](_0x4042f1);
+        let _0x1f08be = _0x59ba9b['hash'];
+        process[_0x69aec2(0x17c)][_0x69aec2(0x149)]('\x0d' + _0x3b9fb4 + 'Nonce:\x20' + _0x17385b + _0x69aec2(0x186) + _0x1f08be + _0x50f8ce), _0x1f08be['startsWith'](_0x3f6112) ? (console[_0x69aec2(0x13d)]('\x0aMining\x20successful!\x20Nonce:\x20' + _0x17385b + _0x69aec2(0x186) + _0x1f08be), _0x5a22d2 = !![], updateWallet(_0x3e107f, _0x59ba9b), _0x42c205[_0x69aec2(0x18a)](_0x59ba9b)) : _0x17385b++;
     }
-    return _0x2adcf0;
+    return _0x42c205;
 }
-async function fund(_0x2c9c63, _0x4ba8c1) {
-    const _0x4a4085 = _0x4977ab;
-    _0x4ba8c1[_0x4a4085(0xfc)](_0x2c9c63[_0x4a4085(0x11f)]), delete _0x4ba8c1[_0x4a4085(0x107)];
-    const _0x4e2450 = process[_0x4a4085(0xf5)][_0x4a4085(0x8f)] !== undefined;
-    if (_0x4e2450) {
-        const _0x389fe9 = parseFloat(process[_0x4a4085(0xf5)][_0x4a4085(0x8f)] * 0x5f5e100);
-        for (const _0x2f56d9 of _0x2c9c63['utxos']) {
-            if (_0x4ba8c1['inputs'][_0x4a4085(0xaa)] && _0x4ba8c1[_0x4a4085(0x109)]['length'] && _0x4ba8c1['inputAmount'] >= _0x4ba8c1[_0x4a4085(0x116)] + _0x4ba8c1['getFee']() && _0x4ba8c1[_0x4a4085(0x105)]() <= _0x389fe9)
+async function fund(_0x3c958b, _0x1709f1) {
+    const _0x1a7640 = _0x518cef;
+    _0x1709f1[_0x1a7640(0x1ad)](_0x3c958b[_0x1a7640(0x17e)]), delete _0x1709f1[_0x1a7640(0x153)];
+    const _0x20d9eb = process['env'][_0x1a7640(0x123)] !== undefined;
+    if (_0x20d9eb) {
+        const _0x3831d3 = parseFloat(process['env']['MAX_FEE_SAT'] * 0x5f5e100);
+        for (const _0x58bc6d of _0x3c958b[_0x1a7640(0x165)]) {
+            if (_0x1709f1['inputs']['length'] && _0x1709f1[_0x1a7640(0x136)][_0x1a7640(0x140)] && _0x1709f1['inputAmount'] >= _0x1709f1[_0x1a7640(0x17f)] + _0x1709f1[_0x1a7640(0x139)]() && _0x1709f1[_0x1a7640(0x139)]() <= _0x3831d3)
                 break;
-            delete _0x4ba8c1[_0x4a4085(0x107)], _0x4ba8c1[_0x4a4085(0xc9)](_0x2f56d9), _0x4ba8c1[_0x4a4085(0xfc)](_0x2c9c63[_0x4a4085(0x11f)]), _0x4ba8c1[_0x4a4085(0xab)](_0x2c9c63[_0x4a4085(0xa8)]);
+            delete _0x1709f1['_fee'], _0x1709f1['from'](_0x58bc6d), _0x1709f1['change'](_0x3c958b['address']), _0x1709f1['sign'](_0x3c958b[_0x1a7640(0x189)]);
         }
-        const _0x536c49 = _0x4ba8c1[_0x4a4085(0x105)]();
-        if (_0x4ba8c1[_0x4a4085(0xc7)] < _0x4ba8c1[_0x4a4085(0x116)] + _0x536c49 || _0x536c49 > _0x389fe9)
-            throw new Error(_0x4a4085(0xf1) + _0x536c49 / 0x5f5e100 + _0x4a4085(0xdc) + _0x389fe9 / 0x5f5e100 + _0x4a4085(0xa5));
+        const _0xc0b4bb = _0x1709f1['getFee']();
+        if (_0x1709f1['inputAmount'] < _0x1709f1[_0x1a7640(0x17f)] + _0xc0b4bb || _0xc0b4bb > _0x3831d3)
+            throw new Error(_0x1a7640(0x143) + _0xc0b4bb / 0x5f5e100 + _0x1a7640(0x194) + _0x3831d3 / 0x5f5e100 + _0x1a7640(0x16e));
     } else {
-        for (const _0x253721 of _0x2c9c63[_0x4a4085(0xc1)]) {
-            if (_0x4ba8c1[_0x4a4085(0xe3)][_0x4a4085(0xaa)] && _0x4ba8c1['outputs'][_0x4a4085(0xaa)] && _0x4ba8c1[_0x4a4085(0xc7)] >= _0x4ba8c1[_0x4a4085(0x116)] + _0x4ba8c1[_0x4a4085(0x105)]())
+        for (const _0x1cd295 of _0x3c958b[_0x1a7640(0x165)]) {
+            if (_0x1709f1[_0x1a7640(0x151)][_0x1a7640(0x140)] && _0x1709f1[_0x1a7640(0x136)][_0x1a7640(0x140)] && _0x1709f1['inputAmount'] >= _0x1709f1[_0x1a7640(0x17f)] + _0x1709f1['getFee']())
                 break;
-            delete _0x4ba8c1[_0x4a4085(0x107)], _0x4ba8c1[_0x4a4085(0xc9)](_0x253721), _0x4ba8c1[_0x4a4085(0xfc)](_0x2c9c63[_0x4a4085(0x11f)]), _0x4ba8c1[_0x4a4085(0xab)](_0x2c9c63['privkey']);
+            delete _0x1709f1[_0x1a7640(0x153)], _0x1709f1[_0x1a7640(0x11d)](_0x1cd295), _0x1709f1[_0x1a7640(0x1ad)](_0x3c958b['address']), _0x1709f1[_0x1a7640(0x1a1)](_0x3c958b[_0x1a7640(0x189)]);
         }
-        if (_0x4ba8c1[_0x4a4085(0xc7)] < _0x4ba8c1[_0x4a4085(0x116)] + _0x4ba8c1[_0x4a4085(0x105)]())
-            throw new Error(_0x4a4085(0x117));
+        if (_0x1709f1['inputAmount'] < _0x1709f1[_0x1a7640(0x17f)] + _0x1709f1[_0x1a7640(0x139)]())
+            throw new Error(_0x1a7640(0x157));
     }
 }
-function updateWallet(_0xc4ac7f, _0x96f6fa) {
-    const _0x4ebdbd = _0x4977ab;
-    _0xc4ac7f[_0x4ebdbd(0xc1)] = _0xc4ac7f['utxos']['filter'](_0xf65ef1 => {
-        const _0xfc32cd = _0x4ebdbd;
-        for (const _0x37766d of _0x96f6fa['inputs']) {
-            if (_0x37766d[_0xfc32cd(0x97)][_0xfc32cd(0xd4)](_0xfc32cd(0xd5)) == _0xf65ef1[_0xfc32cd(0x95)] && _0x37766d['outputIndex'] == _0xf65ef1[_0xfc32cd(0xfb)])
+function updateWallet(_0x4742af, _0x39e1c4) {
+    const _0x3f523a = _0x518cef;
+    _0x4742af[_0x3f523a(0x165)] = _0x4742af[_0x3f523a(0x165)]['filter'](_0x41b1f8 => {
+        const _0x2a28a4 = _0x3f523a;
+        for (const _0x4e7efd of _0x39e1c4[_0x2a28a4(0x151)]) {
+            if (_0x4e7efd[_0x2a28a4(0x12e)]['toString'](_0x2a28a4(0x187)) == _0x41b1f8[_0x2a28a4(0x196)] && _0x4e7efd['outputIndex'] == _0x41b1f8['vout'])
                 return ![];
         }
         return !![];
-    }), _0x96f6fa[_0x4ebdbd(0x109)]['forEach']((_0x110309, _0x35c82e) => {
-        const _0x28ad6a = _0x4ebdbd;
-        _0x110309['script'][_0x28ad6a(0x10d)]()[_0x28ad6a(0xd4)]() == _0xc4ac7f['address'] && _0xc4ac7f[_0x28ad6a(0xc1)][_0x28ad6a(0xc2)]({
-            'txid': _0x96f6fa[_0x28ad6a(0x102)],
-            'vout': _0x35c82e,
-            'script': _0x110309[_0x28ad6a(0xa7)][_0x28ad6a(0xfa)](),
-            'satoshis': _0x110309[_0x28ad6a(0x91)]
+    }), _0x39e1c4['outputs'][_0x3f523a(0x13c)]((_0x129893, _0x4690f2) => {
+        const _0x464487 = _0x3f523a;
+        _0x129893['script'][_0x464487(0x19f)]()['toString']() == _0x4742af[_0x464487(0x17e)] && _0x4742af[_0x464487(0x165)][_0x464487(0x18a)]({
+            'txid': _0x39e1c4[_0x464487(0x14c)],
+            'vout': _0x4690f2,
+            'script': _0x129893[_0x464487(0x130)][_0x464487(0x170)](),
+            'satoshis': _0x129893[_0x464487(0x161)]
         });
     });
 }
-function _0x4ed0(_0x17cd3f, _0x37eacb) {
-    const _0x1d7ed0 = _0x1d7e();
-    return _0x4ed0 = function (_0x4ed0de, _0x1cfff5) {
-        _0x4ed0de = _0x4ed0de - 0x86;
-        let _0x4d3228 = _0x1d7ed0[_0x4ed0de];
-        return _0x4d3228;
-    }, _0x4ed0(_0x17cd3f, _0x37eacb);
-}
-async function broadcast(_0x1f5a79, _0x25288f) {
-    const _0x1cd4a8 = _0x4977ab, _0x36c566 = _0x1f5a79[_0x1cd4a8(0xd4)]();
-    console[_0x1cd4a8(0xff)]('\x1b[36m-------\x20Transaction\x20for\x20Manual\x20Broadcast\x20-------\x1b[0m'), console[_0x1cd4a8(0xff)](_0x36c566), console['log'](_0x1cd4a8(0x118));
-    const _0x1ab6b5 = { 'tx': _0x36c566 }, _0x5ebe5e = _0x1cd4a8(0x8e);
-    let _0x406fde = 0x0;
+async function broadcast(_0x1b89c7, _0x3d4b33) {
+    const _0x9ceefc = _0x518cef, _0x44bc60 = _0x1b89c7[_0x9ceefc(0x167)]();
+    console[_0x9ceefc(0x13d)](_0x9ceefc(0x171)), console['log'](_0x44bc60), console[_0x9ceefc(0x13d)](_0x9ceefc(0x1a6));
+    const _0x2f1f99 = { 'tx': _0x44bc60 }, _0x1bc095 = _0x9ceefc(0x182);
+    let _0x57c039 = 0x0;
     while (!![]) {
         try {
-            _0x406fde++, console[_0x1cd4a8(0xff)](_0x1cd4a8(0xbd) + _0x406fde + '):'), await axios[_0x1cd4a8(0xce)](_0x5ebe5e, _0x1ab6b5), console['log'](_0x1cd4a8(0xaf));
+            _0x57c039++, console[_0x9ceefc(0x13d)](_0x9ceefc(0x19a) + _0x57c039 + '):'), await axios[_0x9ceefc(0x141)](_0x1bc095, _0x2f1f99), console[_0x9ceefc(0x13d)](_0x9ceefc(0x138));
             break;
-        } catch (_0x5da898) {
-            console['log'](_0x1cd4a8(0x110));
-            if (!_0x25288f) {
-                console[_0x1cd4a8(0xff)](_0x1cd4a8(0x98));
-                throw _0x5da898;
+        } catch (_0x1b61ed) {
+            console[_0x9ceefc(0x13d)](_0x9ceefc(0x183));
+            if (!_0x3d4b33) {
+                console[_0x9ceefc(0x13d)](_0x9ceefc(0x19b));
+                throw _0x1b61ed;
             }
-            let _0x29f179 = _0x5da898[_0x1cd4a8(0x104)] && _0x5da898[_0x1cd4a8(0x104)][_0x1cd4a8(0x11c)] && _0x5da898[_0x1cd4a8(0x104)][_0x1cd4a8(0x11c)]['error'] && _0x5da898[_0x1cd4a8(0x104)][_0x1cd4a8(0x11c)][_0x1cd4a8(0xd9)][_0x1cd4a8(0xd8)];
-            if (_0x29f179 && _0x29f179[_0x1cd4a8(0xc5)](_0x1cd4a8(0x114)))
-                console[_0x1cd4a8(0xdf)](_0x1cd4a8(0xdd)), await new Promise(_0x3fa103 => setTimeout(_0x3fa103, 0x3e8));
+            let _0x5905c8 = _0x1b61ed[_0x9ceefc(0x142)] && _0x1b61ed[_0x9ceefc(0x142)]['data'] && _0x1b61ed[_0x9ceefc(0x142)][_0x9ceefc(0x14d)]['error'] && _0x1b61ed[_0x9ceefc(0x142)][_0x9ceefc(0x14d)][_0x9ceefc(0x15d)][_0x9ceefc(0x134)];
+            if (_0x5905c8 && _0x5905c8[_0x9ceefc(0x14b)]('too-long-mempool-chain'))
+                console[_0x9ceefc(0x174)](_0x9ceefc(0x18b)), await new Promise(_0x248801 => setTimeout(_0x248801, 0x3e8));
             else {
-                console[_0x1cd4a8(0xff)]('Manual\x20broadcast\x20may\x20be\x20required.\x20Use\x20the\x20serialized\x20transaction\x20above.');
-                throw _0x5da898;
+                console[_0x9ceefc(0x13d)]('Manual\x20broadcast\x20may\x20be\x20required.\x20Use\x20the\x20serialized\x20transaction\x20above.');
+                throw _0x1b61ed;
             }
         }
     }
-    let _0x191a42 = JSON[_0x1cd4a8(0xc3)](fs['readFileSync'](WALLET_PATH));
-    updateWallet(_0x191a42, _0x1f5a79), console[_0x1cd4a8(0xff)](_0x1cd4a8(0xf0)), fs[_0x1cd4a8(0xf9)](WALLET_PATH, JSON[_0x1cd4a8(0xd0)](_0x191a42, 0x0, 0x2));
+    let _0x1dd168 = JSON['parse'](fs[_0x9ceefc(0x16a)](WALLET_PATH));
+    updateWallet(_0x1dd168, _0x1b89c7), console[_0x9ceefc(0x13d)]('\x1b[34mUpdating\x20wallet\x20with\x20new\x20transaction.\x1b[0m'), fs[_0x9ceefc(0x160)](WALLET_PATH, JSON[_0x9ceefc(0x155)](_0x1dd168, 0x0, 0x2));
 }
-function chunkToNumber(_0x5ebcb8) {
-    const _0x57ad68 = _0x4977ab;
-    if (_0x5ebcb8[_0x57ad68(0xad)] == 0x0)
+function chunkToNumber(_0x5b8be1) {
+    const _0xcd2d22 = _0x518cef;
+    if (_0x5b8be1['opcodenum'] == 0x0)
         return 0x0;
-    if (_0x5ebcb8[_0x57ad68(0xad)] == 0x1)
-        return _0x5ebcb8[_0x57ad68(0xb9)][0x0];
-    if (_0x5ebcb8[_0x57ad68(0xad)] == 0x2)
-        return _0x5ebcb8[_0x57ad68(0xb9)][0x1] * 0xff + _0x5ebcb8[_0x57ad68(0xb9)][0x0];
-    if (_0x5ebcb8[_0x57ad68(0xad)] > 0x50 && _0x5ebcb8[_0x57ad68(0xad)] <= 0x60)
-        return _0x5ebcb8[_0x57ad68(0xad)] - 0x50;
+    if (_0x5b8be1['opcodenum'] == 0x1)
+        return _0x5b8be1[_0xcd2d22(0x166)][0x0];
+    if (_0x5b8be1['opcodenum'] == 0x2)
+        return _0x5b8be1[_0xcd2d22(0x166)][0x1] * 0xff + _0x5b8be1[_0xcd2d22(0x166)][0x0];
+    if (_0x5b8be1['opcodenum'] > 0x50 && _0x5b8be1[_0xcd2d22(0x13b)] <= 0x60)
+        return _0x5b8be1[_0xcd2d22(0x13b)] - 0x50;
     return undefined;
 }
-main()['catch'](_0x490585 => {
-    const _0x3f67ca = _0x4977ab;
-    let _0x3aafa5 = _0x490585[_0x3f67ca(0x104)] && _0x490585[_0x3f67ca(0x104)][_0x3f67ca(0x11c)] && _0x490585['response']['data'][_0x3f67ca(0xd9)] && _0x490585[_0x3f67ca(0x104)]['data'][_0x3f67ca(0xd9)][_0x3f67ca(0xd8)];
-    console[_0x3f67ca(0xd9)](_0x3aafa5 ? _0x490585['message'] + ':' + _0x3aafa5 : _0x490585['message']);
+main()[_0x518cef(0x16c)](_0x565b71 => {
+    const _0x4d9a18 = _0x518cef;
+    let _0x386238 = _0x565b71[_0x4d9a18(0x142)] && _0x565b71['response'][_0x4d9a18(0x14d)] && _0x565b71['response'][_0x4d9a18(0x14d)]['error'] && _0x565b71[_0x4d9a18(0x142)][_0x4d9a18(0x14d)][_0x4d9a18(0x15d)]['message'];
+    console['error'](_0x386238 ? _0x565b71[_0x4d9a18(0x134)] + ':' + _0x386238 : _0x565b71[_0x4d9a18(0x134)]);
 });
+function _0x31a7() {
+    const _0x330502 = [
+        'opcodenum',
+        'forEach',
+        'log',
+        'broadcasting\x20tx\x20',
+        'toPublicKey',
+        'length',
+        'post',
+        'response',
+        'Insufficient\x20funds\x20or\x20transaction\x20fee\x20exceeds\x20limit（Current\x20fee:\x20',
+        'WALLET',
+        '1446753tmIaNQ',
+        'addOutput',
+        'https://api.blockcypher.com/v1/doge/main/addrs/',
+        'OP_EQUAL',
+        'write',
+        'slice',
+        'includes',
+        'hash',
+        'data',
+        'pop',
+        '.wallet.json',
+        'NHQ9fRG',
+        'inputs',
+        'axios',
+        '_fee',
+        'KnGWy4b',
+        'stringify',
+        'ord',
+        'not\x20enough\x20funds',
+        'isArray',
+        'Networks',
+        'addInput',
+        '1179164ygEhWy',
+        '\x20of\x20',
+        'error',
+        'unshift',
+        'Error:\x20Send\x20address\x20and\x20Receive\x20address\x20cannot\x20be\x20the\x20same.',
+        'writeFileSync',
+        'satoshis',
+        'balance',
+        '\x0astart\x20mining\x20......\x0a',
+        'argv',
+        'utxos',
+        'buf',
+        'toString',
+        'mint',
+        'FEE_PER_KB',
+        'readFileSync',
+        '\x0a\x0a\x09##\x20\x20\x20\x20##\x20\x20#######\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20\x20\x20####\x20\x20\x20\x20\x20\x20\x20\x20#####\x20\x20\x20\x20\x20\x20\x20####\x20\x20\x20\x20\x20\x20#####\x20\x20\x20##\x20\x20\x20\x20\x20##\x20\x20\x0a\x09##\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20#\x20\x20##\x20\x20\x0a\x09#######\x20\x20######\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20##\x20\x20\x20##\x20\x20\x20##\x20\x20\x20\x20##\x20\x20##\x20\x20###\x20\x20\x20##\x20\x20#\x20\x20##\x20\x20\x0a\x09##\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20##\x20\x20\x20##\x20\x20\x20##\x20\x20\x20\x20##\x20\x20##\x20\x20\x20##\x20\x20\x20##\x20\x20#\x20\x20##\x20\x20\x0a\x09##\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20\x20\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20##\x20\x20##\x20\x20\x20\x20###\x20###\x20\x20\x20\x0a\x09##\x20\x20\x20\x20##\x20\x20#######\x20\x20#######\x20\x20#######\x20\x20\x20\x20####\x20\x20\x20\x20\x20\x20\x20\x20#####\x20\x20\x20\x20\x20\x20\x20####\x20\x20\x20\x20\x20\x20####\x20\x20\x20\x20\x20\x20##\x20##\x20\x20\x20\x20\x0a\x09\x0a',
+        'catch',
+        'config',
+        '\x20DOGE）',
+        'Insufficient\x20balance\x20for\x20mining.\x20Required:\x20>3\x20DOGE,\x20Available:',
+        'toHex',
+        '\x1b[36m-------\x20Transaction\x20for\x20Manual\x20Broadcast\x20-------\x1b[0m',
+        'Output',
+        'wallet',
+        'warn',
+        'sha256',
+        '10078284zppOfQ',
+        'parse',
+        'Receive\x20address:\x20',
+        '21681ucwLXm',
+        'wallet\x20already\x20exists',
+        'no\x20funds\x20to\x20split',
+        'stdout',
+        'no\x20testnet\x20api',
+        'address',
+        'outputAmount',
+        'drc-20',
+        '30581620Cfzxaj',
+        'https://api.blockcypher.com/v1/doge/main/txs/push',
+        '\x1b[31mBroadcast\x20failed.\x1b[0m',
+        'no\x20data\x20to\x20mint',
+        'toBuffer',
+        ',\x20TXID:\x20',
+        'hex',
+        'Send\x20address:\x20',
+        'privkey',
+        'push',
+        '\x1b[33mRetrying\x20due\x20to\x20too-long-mempool-chain...\x1b[0m',
+        'value',
+        'OP_DROP',
+        'bad-txns-inputs-spent',
+        '2434324LvsVaH',
+        'get',
+        'BITWORK',
+        'Nonce:\x20',
+        'map',
+        '\x20DOGE，Max\x20fee:\x20',
+        'KjUVg',
+        'txid',
+        '10zecGET',
+        'floor',
+        'replace',
+        'Attempting\x20to\x20broadcast\x20(Attempt\x20',
+        'Manual\x20broadcast\x20may\x20be\x20required.\x20Use\x20the\x20serialized\x20transaction\x20above.',
+        'unknown\x20subcommand:\x20',
+        'reduce',
+        'test',
+        'toAddress',
+        '1492Vgnadf',
+        'sign',
+        'OP_HASH160',
+        'chunks',
+        'txrefs',
+        'UhMvxbd',
+        '\x1b[36m------------------------------------------------\x1b[0m',
+        'trim',
+        'OP_TRUE',
+        '?unspentOnly=true&includeScript=true',
+        'min',
+        'Bitwork:\x20',
+        '6249iHWiBu',
+        'change',
+        'DOGE',
+        'bitcore-lib-doge',
+        'tx_output_n',
+        'defaultNetwork',
+        'from',
+        'existsSync',
+        'inscription\x20txid:',
+        'OP_CHECKSIGVERIFY',
+        'setScript',
+        '\x0abalance',
+        'MAX_FEE_SAT',
+        'tx\x20already\x20sent,\x20skipping',
+        'mime-types',
+        'crypto',
+        'true',
+        'no\x20transactions\x20to\x20broadcast',
+        'getSignatures',
+        'shift',
+        'concat',
+        'spent',
+        'no\x20funds\x20to\x20send',
+        'prevTxId',
+        'buildPublicKeyHashOut',
+        'script',
+        '2096vnsrTi',
+        'SIGHASH_ALL',
+        'env',
+        'message',
+        '\x20Timestamp:\x20',
+        'outputs',
+        'tx_hash',
+        '\x1b[32mBroadcast\x20successful!\x1b[0m',
+        'getFee',
+        'unknown\x20command:\x20'
+    ];
+    _0x31a7 = function () {
+        return _0x330502;
+    };
+    return _0x31a7();
+}
